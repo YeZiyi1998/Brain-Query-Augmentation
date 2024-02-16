@@ -93,13 +93,16 @@ The meaning of hyper parameters are listed below:
 | shuffle_times | permutation times for RS Brain |
 
 ### Model Evaluation
-To evaluate the model with different prompt input, i.e., Brain-Aug, RS Brain, and LLM, you can specify the parameter *-input_method* as *normal*, *permutated*, *without_brain*, respectively. To test the model performance without any text prompt, you should train and evaluate the model while setting *-input_method* as *without_text*.
+To evaluate the model with different prompt input, i.e., Brain-Aug, RS Brain, and w/o Brain, you can specify the parameter *-input_method* as *normal*, *permutated*, *without_brain*, respectively. To test the model performance without any query prompt, you should train and evaluate the model while setting *-input_method* as *without_text*.
 
-After that, you can get output files for different prompt inputs. Then, you can evaluate their performance by runing the python script *language_generation/src/post_hoc_evaluatoion.py* with the path of output files specified.
+After that, you can get output files for different query inputs. Then, you can analyze the query generation performance by runing the python script *language_generation/src/post_hoc_evaluatoion.py* with the path of output files specified.
 Refer to *language_generation/src/post_hoc_evaluatoion.py* for example usage:
 ```bash
 python language_generation/src/post_hoc_evaluatoion.py
 ```
+
+Furthermore, we can evaluate the document ranking ability of Brain-Aug. The code for document ranking experiment is provided in *ict*. For BM25, we have provided two versions: self-implemented and [Whoosh](https://whoosh.readthedocs.io/en/latest/searching.html) implementation. For ReplLAMA, we have implemented it according to the official guidelines in [huggingface](https://huggingface.co/castorini/repllama-v1-7b-lora-passage).
+
 
 ### Dataset
 We test our approach on three public fMRI datasets: [Pereira's dataset](https://www.nature.com/articles/s41467-018-03068-4), [Huth's dataset](https://www.nature.com/articles/s41597-023-02437-z), and [Narratives dataset](https://www.nature.com/articles/s41597-021-01033-3). The brief introduction, ethical information, statistics, and useage details of these datasets are provied in our paper.

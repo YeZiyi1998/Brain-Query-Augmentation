@@ -265,15 +265,6 @@ class FMRI_dataset_old():
                 Narratives_dataset = pickle.load(open(f'{dataset_path}{story}.pca1000.wq.pkl.dic','rb')) if args['fmri_pca'] else pickle.load(open(f'{dataset_path}{story}.wq.pkl.dic','rb'))
                 for subject in [f'sub-{subject_name}']:
                     for item_id, item in enumerate(input_dataset[story][subject]):
-                        #  # jiayudebug snippet
-                        # inputs = ''
-                        # while inputs != 'continue':
-                        #     try:
-                        #         print(eval(inputs))
-                        #     except Exception as e:
-                        #         print('error:', e)
-                        #         pass
-                        #     inputs = input()
                         for k in range(1, len(item['word'])):
                             cid = info2cid[sid][item_id][k]
                             content_prev = ' '.join([item['word'][j]['content'] for j in range(0,k)])
