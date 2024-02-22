@@ -96,27 +96,9 @@ def get_reranking_score_bingxing(querys, passages, model, tokenizer, device = No
         new_input[k] = torch.cat([item[k] for item in inputs])
     # torch.cat([item['input_ids'] for item in inputs])
     # Run the model forward
-    # jiayudebug snippet
-    inputs2 = ''
-    while inputs2 != 'continue':
-        try:
-            print(eval(inputs2))
-        except Exception as e:
-            print('error:', e)
-            pass
-        inputs2 = input()
     with torch.no_grad():
         outputs = model(**inputs)
         logits = outputs.logits
-        # jiayudebug snippet
-        inputs = ''
-        while inputs != 'continue':
-            try:
-                print(eval(inputs))
-            except Exception as e:
-                print('error:', e)
-                pass
-            inputs = input()
         score = logits[0][0]
     return score.detach().cpu().numpy()
 
@@ -155,15 +137,6 @@ if __name__ == '__main__':
         query = get_embeddings(query, model, tokenizer, input_type='query', device=device)
         passage = get_embeddings(passage, model, tokenizer, input_type='passage', device=device)
         print(get_score(query, passage, ))
-        # jiayudebug snippet
-        inputs = ''
-        while inputs != 'continue':
-            try:
-                print(eval(inputs))
-            except Exception as e:
-                print('error:', e)
-                pass
-            inputs = input()
         query = input('query=')
         passage = input('passage=')
         

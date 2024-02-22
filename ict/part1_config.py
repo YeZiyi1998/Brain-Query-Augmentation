@@ -60,13 +60,13 @@ def load_data(args):
     if args.all_random_number:
         return load_all_data(args)
     # load stimuli information
-    all_input_data = pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}all_input_data.pkl','rb'))
+    all_input_data = pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}all_input_data.pkl','rb'))
     if '10' not in args.common_data_prefix:
         print('loading data mask ...')
-        all_input_data_mask = pickle.load(open(f'../common_data/{args.task_name}/llama-7b.10all_input_data.pkl','rb'))
+        all_input_data_mask = pickle.load(open(f'../../common_data/{args.task_name}/llama-7b.10all_input_data.pkl','rb'))
     else:
         all_input_data_mask = all_input_data
-    fpm = pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}fpm.pkl','rb')) if 'Pereira' not in args.task_name else pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}fdm.pkl','rb'))
+    fpm = pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}fpm.pkl','rb')) if 'Pereira' not in args.task_name else pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}fdm.pkl','rb'))
     # building index for fpm
     all_input_data = [item for idx, item in enumerate(all_input_data) if all_input_data_mask[idx]['trail_id'] > args.test_ids[0] and all_input_data_mask[idx]['trail_id'] <= args.test_ids[1]] 
     
@@ -77,10 +77,10 @@ def load_data(args):
 
 def load_all_data(args):
     all_input_data_all = []
-    all_input_data = pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}all_input_data.pkl','rb'))
+    all_input_data = pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}all_input_data.pkl','rb'))
     if '10' not in args.common_data_prefix:
         print('loading data mask ...')
-        all_input_data_mask = pickle.load(open(f'../common_data/{args.task_name}/llama-7b.10all_input_data.pkl','rb'))
+        all_input_data_mask = pickle.load(open(f'../../common_data/{args.task_name}/llama-7b.10all_input_data.pkl','rb'))
     else:
         all_input_data_mask = all_input_data
         # building index for fpm
@@ -90,7 +90,7 @@ def load_all_data(args):
         tmp_all_input_data = [item for idx, item in enumerate(all_input_data) if all_input_data_mask[idx]['trail_id'] > args.test_ids[0] + margin and all_input_data_mask[idx]['trail_id'] <= args.test_ids[1] + margin] 
         all_input_data_all += tmp_all_input_data
     mode = 'document' if 'Pereira' in args.task_name else 'passage'
-    fpm = pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}fpm.pkl','rb')) if 'Pereira' not in args.task_name else pickle.load(open(f'../common_data/{args.task_name}/{args.common_data_prefix}fdm.pkl','rb'))
+    fpm = pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}fpm.pkl','rb')) if 'Pereira' not in args.task_name else pickle.load(open(f'../../common_data/{args.task_name}/{args.common_data_prefix}fdm.pkl','rb'))
     return all_input_data_all, fpm, mode
 
 def add2dic(dic1, dic2):

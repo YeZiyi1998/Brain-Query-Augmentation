@@ -4,6 +4,7 @@ import json
 import copy
 import os
 from collections import Counter
+from settings import w2idf_path, w2idx_path
 
 # from system.utils import softmax
 
@@ -17,8 +18,8 @@ def softmax(logits):
 
 rm3_paras = {'avg_doc_len':58.7, 'k1':1.2, 'k3':1.2, 'b':0.75, 'lambda':0.6, 'add_count':10}
 
-w2idf = json.load(open(''))
-w2idx = json.load(open(''))
+w2idf = json.load(open(w2idf_path))
+w2idx = json.load(open(w2idx_path))
     
 local_idf = None
 def load_local_idf(data_path):
