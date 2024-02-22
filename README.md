@@ -102,7 +102,15 @@ python language_generation/src/post_hoc_evaluatoion.py
 ```
 
 Furthermore, we can evaluate the document ranking ability of Brain-Aug. The code for document ranking experiment is provided in *ict*. For BM25, we have provided two versions: self-implemented and [Whoosh](https://whoosh.readthedocs.io/en/latest/searching.html) implementation. For ReplLAMA, we have implemented it according to the official guidelines in [huggingface](https://huggingface.co/castorini/repllama-v1-7b-lora-passage).
-
+We provide an example script in *ict/scripts/run_pereira.sh*:
+```bash
+python part1_rank.py --task_name $2 --model $3 --result_path ../language_generation/results/$2_$1 --common_data_prefix $1.10 --all_random_number True
+```
+where *$2* is the task name consists of dataset name and participant ID, model is the selection of the ranking model, *$1* is the prefix of the preprocessec dataset.
+An example usage to run experiment on Pereira's dataset and participant P01 using ranking model of BM25 is:
+```bash
+sh scripts/run_pereira.sh llama-7b Pereira_P01 bm25
+```
 
 ### Dataset
 We test our approach on three public fMRI datasets: [Pereira's dataset](https://www.nature.com/articles/s41467-018-03068-4), [Huth's dataset](https://www.nature.com/articles/s41597-023-02437-z), and [Narratives dataset](https://www.nature.com/articles/s41597-021-01033-3). The brief introduction, ethical information, statistics, and useage details of these datasets are provied in our paper.

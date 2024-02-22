@@ -16,3 +16,4 @@ __pycache__/
 language_generation/src/settings.py
 .DS_Store
 language_generation/scripts
+ict/settings.py
