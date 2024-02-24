@@ -2,7 +2,7 @@
 
 <img src="./figures/model_structure.jpg" alt="Logo" height="80%">
 
-This is the official repo for our paper ***Query Augmentation by Semantic Decoding from Brain Signals***. 
+This is the official repo for our paper ***Query Augmentation by Decoding Semantics from Brain Signals***. 
 
 ## Quick Start
 We have provided an example dataset to facilitate the replication of experiments. To run the example dataset, you can go into the sub-directory *language_generation/src* and use the following command:
@@ -41,6 +41,9 @@ In addition to PyTorch, we adopt several publicly available packages, which can 
 ```bash
 pip install -r requirements.txt
 ```
+
+The original code provided in the transformers package by the Hugging Face needs to be modified to implement the ranking-orient generation.
+Here, we present an example implementation for the transformers package version 4.33.1 in *help/utils.py*. You can conveniently utilize this example code to replace the existing code in *transformers/generation/utils.py*. Alternatively, you can modify your code to align with this example implementation if you're using a different version of transformers.
 
 ### Model Training
 To train the model, you need to special the parameter *-mode* as *training* (only training) or *all* (training and evaluation).
