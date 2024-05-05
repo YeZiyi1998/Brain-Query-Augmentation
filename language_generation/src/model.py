@@ -278,7 +278,7 @@ class Decoding_model:
         if self.args['enable_grad']:
             self.model.load_state_dict(re['total_model'])
         else:
-            self.prompt_model.token_weights.weight = re['new_tokens'].detach()
+            self.prompt_model.token_weights.data = re['new_tokens'].detach()
                 
         self.check_point = re
 
